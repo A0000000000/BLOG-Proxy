@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/A0000000000/BLOG-Proxy#readme",
   "dependencies": {
-    "koa": "^2.13.0"
+    "axios": "^0.21.0",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^10.0.0",
+    "koa2-cors": "^2.0.6"
   }
 }
