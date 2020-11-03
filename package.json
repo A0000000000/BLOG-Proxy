@@ -1,0 +1,23 @@
+{
+  "name": "BLOG-Proxy",
+  "version": "1.0.0",
+  "description": "博客的代理层",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A0000000000/BLOG-Proxy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/A0000000000/BLOG-Proxy/issues"
+  },
+  "homepage": "https://github.com/A0000000000/BLOG-Proxy#readme",
+  "dependencies": {
+    "koa": "^2.13.0"
+  }
+}
