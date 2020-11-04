@@ -19,7 +19,7 @@ methods.getSystemCreateTime = async (params) => {
     if (data.code === 0) {
         let date = new Date(data.data);
         let currentDate = new Date();
-        res.data = new Date(currentDate - date);
+        res.data = new Date(currentDate - date).getTime();
     } else {
         res.message = data.message;
     }
