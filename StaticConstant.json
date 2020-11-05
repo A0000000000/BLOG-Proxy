@@ -1,5 +1,6 @@
 {
     "ip": "http://localhost",
     "port": "8080",
-    "source": "Koa Proxy"
+    "source": "Koa Proxy",
+    "i18n": "zh-CN.json"
 }

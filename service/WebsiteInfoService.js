@@ -1,4 +1,7 @@
 let WebsiteInfoRemote = require('../remote/WebsiteInfoRemote');
+let StaticConstant = require('../StaticConstant.json');
+const i18n = require('../i18n/' + StaticConstant.i18n);
+
 let methods = {};
 
 methods.getWebsiteVisitCount = async (params) => {
@@ -7,7 +10,7 @@ methods.getWebsiteVisitCount = async (params) => {
     if (data.code === 0) {
         res.data = data.data;
     } else {
-        res.message = data.message;
+        res.message = i18n[data.message];
     }
     return res;
 };
@@ -21,7 +24,7 @@ methods.getSystemCreateTime = async (params) => {
         let currentDate = new Date();
         res.data = new Date(currentDate - date).getTime();
     } else {
-        res.message = data.message;
+        res.message = i18n[data.message];
     }
     return res;
 }
