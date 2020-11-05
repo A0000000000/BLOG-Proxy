@@ -12,10 +12,12 @@ const router = new Router();
 // 导入子路由
 let WebsiteInfoService = require('./router/WebsiteInfoRouter');
 let SystemConfigRouter = require('./router/SystemConfigRouter');
+let AdministratorRouter = require('./router/AdministratorRouter');
 
 // 使用子路由
 router.use('/api', WebsiteInfoService.routes());
 router.use('/api/systemConfig', SystemConfigRouter.routes());
+router.use('/api/admin', AdministratorRouter.routes())
 // 设置超时时间
 app.use(async (ctx, next) => {
     const start = Date.now();

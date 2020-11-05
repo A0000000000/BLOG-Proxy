@@ -10,7 +10,7 @@ methods.getWebsiteVisitCount = async (params) => {
     if (data.code === 0) {
         res.data = data.data;
     } else {
-        res.message = i18n[data.message];
+        res.message = i18n[data.message] ? i18n[data.message] : data.message;
     }
     return res;
 };
@@ -24,7 +24,7 @@ methods.getSystemCreateTime = async (params) => {
         let currentDate = new Date();
         res.data = new Date(currentDate - date).getTime();
     } else {
-        res.message = i18n[data.message];
+        res.message = i18n[data.message] ? i18n[data.message] : data.message;
     }
     return res;
 }
