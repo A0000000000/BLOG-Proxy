@@ -32,6 +32,16 @@ methods.isAdmin = async config => {
         }
     });
     return data.data;
-}
+};
 
+methods.flushToken = async (params, config) => {
+    let url = StaticConstant.ip + ':' + StaticConstant.port + '/api/other/flushToken';
+    let data = await axios.post(url, params.token, {
+        headers: {
+            source: StaticConstant.source,
+            ip: config.ip
+        }
+    });
+    return data.data;
+};
 module.exports = methods;

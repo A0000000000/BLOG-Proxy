@@ -3,21 +3,21 @@ const i18n = require('../i18n/' + StaticConstant.i18n);
 let AdministratorRemote = require('../remote/AdministratorRemote');
 let methods = {};
 
-methods.adminLogin = async params => {
-    let data = params.data;
+methods.adminLogin = async args => {
+    let data = args.data;
     if (!data.username || !data.password) {
         return {
             code: 1,
             message: i18n['A00000-009']
         };
     }
-    let tmpData = await AdministratorRemote.login(params.data, params.config);
+    let tmpData = await AdministratorRemote.login(args.data, args.config);
     let res = {};
     if (tmpData.code === 0) {
         res.code = 0;
         let token = tmpData.data.token;
         let config = {
-            ip: params.config.ip,
+            ip: args.config.ip,
             token
         };
         let isAdmin = await AdministratorRemote.isAdmin(config);
@@ -36,6 +36,27 @@ methods.adminLogin = async params => {
         res.message = i18n[tmpData.message] ? i18n[tmpData.message] : tmpData.data;
     }
     return res;
+};
+
+methods.reflushToken = async args => {
+    if (!args || !args.params || !args.params.token) {
+        return {
+            code: 1,
+            message: i18n['A00000-009']
+        };
+    }
+    let data = await AdministratorRemote.flushToken(args.params, args.config);
+    if (data.code === 0) {
+        return {
+            code: data.code,
+            data: data.data
+        };
+    } else {
+        return {
+            code: data.code,
+            message: i18n[data.message] ? i18n[data.message] : data.message
+        };
+    }
 };
 
 module.exports = methods;
