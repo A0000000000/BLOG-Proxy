@@ -44,4 +44,17 @@ methods.flushToken = async (params, config) => {
     });
     return data.data;
 };
+
+methods.getUserView = async (params, config) => {
+    let url = `${StaticConstant.ip}:${StaticConstant.port}/api/admin/userViewGet`;
+    let data = await axios.post(url, params, {
+        headers: {
+            source: StaticConstant.source,
+            ip: config.ip,
+            token: config.token
+        }
+    });
+    return data.data;
+};
+
 module.exports = methods;

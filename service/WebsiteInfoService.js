@@ -23,7 +23,7 @@ Date.prototype.format = function(fmt) {
         }
     }
    return fmt; 
-}     
+};
 
 methods.getWebsiteVisitCount = async args => {
     let data = await WebsiteInfoRemote.getVisitCount(args.config);
