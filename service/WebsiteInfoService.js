@@ -1,28 +1,27 @@
 let WebsiteInfoRemote = require('../remote/WebsiteInfoRemote');
-let StaticConstant = require('../StaticConstant.json');
-const i18n = require('../i18n/' + StaticConstant.i18n);
+const i18n = require('../i18n/i18n');
 
 let methods = {};
 
-Date.prototype.format = function(fmt) { 
-    var o = { 
-       "M+" : this.getMonth()+1,
-       "d+" : this.getDate(),
-       "h+" : this.getHours(),
-       "m+" : this.getMinutes(),
-       "s+" : this.getSeconds(),
-       "q+" : Math.floor((this.getMonth()+3)/3),
-       "S"  : this.getMilliseconds()
-   }; 
-   if(/(y+)/.test(fmt)) {
-           fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
-   }
-    for(var k in o) {
-       if(new RegExp("("+ k +")").test(fmt)){
-            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+Date.prototype.format = function (fmt) {
+    var o = {
+        'M+': this.getMonth() + 1,
+        'd+': this.getDate(),
+        'h+': this.getHours(),
+        'm+': this.getMinutes(),
+        's+': this.getSeconds(),
+        'q+': Math.floor((this.getMonth() + 3) / 3),
+        'S': this.getMilliseconds()
+    };
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+    }
+    for (var k in o) {
+        if (new RegExp('(' + k + ')').test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)));
         }
     }
-   return fmt; 
+    return fmt;
 };
 
 methods.getWebsiteVisitCount = async args => {
@@ -31,7 +30,7 @@ methods.getWebsiteVisitCount = async args => {
     if (data.code === 0) {
         res.data = data.data;
     } else {
-        res.message = i18n[data.message] ? i18n[data.message] : data.message;
+        res.message = i18n(data.message);
     }
     return res;
 };
@@ -45,7 +44,7 @@ methods.getSystemCreateTime = async args => {
         let currentDate = new Date();
         res.data = new Date(currentDate - date).getTime();
     } else {
-        res.message = i18n[data.message] ? i18n[data.message] : data.message;
+        res.message = i18n(data.message);
     }
     return res;
 };
@@ -57,7 +56,7 @@ methods.getIndexData = async args => {
     if (visitCount.code !== 0) {
         res.visitCount = {
             code: visitCount.code,
-            message: i18n[visitCount.message] ? i18n[visitCount.message] : visitCount.message
+            message: i18n(visitCount.message)
         }
     } else {
         res.visitCount = {
@@ -68,7 +67,7 @@ methods.getIndexData = async args => {
     if (systemCreateTime.code !== 0) {
         res.systemCreateTime = {
             code: systemCreateTime.code,
-            message: i18n[systemCreateTime.message] ? i18n[systemCreateTime.message] : systemCreateTime.message
+            message: i18n(systemCreateTime.message)
         }
     } else {
         let date = new Date(systemCreateTime.data);
@@ -86,7 +85,7 @@ methods.getLog = async args => {
     if (!args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.page) {
@@ -111,7 +110,7 @@ methods.getLog = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 };
@@ -120,7 +119,7 @@ methods.getAccessInfo = async args => {
     if (!args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         }
     }
     if (!args.params.page) {
@@ -145,7 +144,7 @@ methods.getAccessInfo = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 };

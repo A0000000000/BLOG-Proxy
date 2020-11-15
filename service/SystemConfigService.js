@@ -1,13 +1,12 @@
 let SystemConfigRemote = require('../remote/SystemConfigRemote');
-let StaticConstant = require('../StaticConstant.json');
-const i18n = require('../i18n/' + StaticConstant.i18n);
+const i18n = require('../i18n/i18n');
 let methods = {};
 
 methods.getCodeContrast = async args => {
     if (!args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.page) {
@@ -28,7 +27,7 @@ methods.getCodeContrast = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 };
@@ -37,13 +36,13 @@ methods.addCodeContrast = async args => {
     if (!args || !args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.name || !args.params.value) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     let data = await SystemConfigRemote.addCodeContrast(args.params, args.config);
@@ -55,7 +54,7 @@ methods.addCodeContrast = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 };
@@ -64,13 +63,13 @@ methods.removeCodeContrast = async args => {
     if (!args || !args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.id) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     let data = await SystemConfigRemote.removeCodeContrast(args.params, args.config);
@@ -82,7 +81,7 @@ methods.removeCodeContrast = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 }
@@ -91,7 +90,7 @@ methods.getAccessSource = async args => {
     if (!args || !args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.page) {
@@ -112,7 +111,7 @@ methods.getAccessSource = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 };
@@ -121,7 +120,7 @@ methods.addAccessSource = async args => {
     if (!args || !args.params || !args.params.name) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     let data = await SystemConfigRemote.addAccessSource(args.params, args.config);
@@ -133,7 +132,7 @@ methods.addAccessSource = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 };
@@ -142,7 +141,7 @@ methods.removeAccessSource = async args => {
     if (!args || !args.params || !args.params.id) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     let data = await SystemConfigRemote.removeAccessSource(args.params, args.config);
@@ -154,7 +153,7 @@ methods.removeAccessSource = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 }
@@ -163,7 +162,7 @@ methods.getConfig = async args => {
     if (!args || !args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.page) {
@@ -184,7 +183,7 @@ methods.getConfig = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 }
@@ -193,13 +192,13 @@ methods.addConfig = async args => {
     if (!args || !args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.name || !args.params.value) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     let data = await SystemConfigRemote.addConfig(args.params, args.config);
@@ -211,7 +210,7 @@ methods.addConfig = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 }
@@ -220,13 +219,13 @@ methods.updateConfig = async args => {
     if (!args || !args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.id || !args.params.name || !args.params.value) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     let data = await SystemConfigRemote.updateConfig(args.params, args.config);
@@ -238,7 +237,7 @@ methods.updateConfig = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 }
@@ -247,13 +246,13 @@ methods.removeConfig = async args => {
     if (!args || !args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.id) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     let data = await SystemConfigRemote.removeConfig(args.params, args.config);
@@ -265,7 +264,7 @@ methods.removeConfig = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 }

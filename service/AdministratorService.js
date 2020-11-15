@@ -1,24 +1,23 @@
-let StaticConstant = require('../StaticConstant.json');
-const i18n = require('../i18n/' + StaticConstant.i18n);
+const i18n = require('../i18n/i18n');
 let AdministratorRemote = require('../remote/AdministratorRemote');
 let methods = {};
 
 Date.prototype.format = function (fmt) {
     var o = {
-        "M+": this.getMonth() + 1,
-        "d+": this.getDate(),
-        "h+": this.getHours(),
-        "m+": this.getMinutes(),
-        "s+": this.getSeconds(),
-        "q+": Math.floor((this.getMonth() + 3) / 3),
-        "S": this.getMilliseconds()
+        'M+': this.getMonth() + 1,
+        'd+': this.getDate(),
+        'h+': this.getHours(),
+        'm+': this.getMinutes(),
+        's+': this.getSeconds(),
+        'q+': Math.floor((this.getMonth() + 3) / 3),
+        'S': this.getMilliseconds()
     };
     if (/(y+)/.test(fmt)) {
-        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
     }
     for (var k in o) {
-        if (new RegExp("(" + k + ")").test(fmt)) {
-            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        if (new RegExp('(' + k + ')').test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)));
         }
     }
     return fmt;
@@ -29,7 +28,7 @@ methods.adminLogin = async args => {
     if (!data.username || !data.password) {
         return {
             code: 1,
-            message: i18n['A00000-009']
+            message: i18n('A00000-009')
         };
     }
     let tmpData = await AdministratorRemote.login(args.data, args.config);
@@ -51,11 +50,11 @@ methods.adminLogin = async args => {
             }
         } else {
             res.code = isAdmin.code;
-            res.message = i18n[isAdmin.message] ? i18n[isAdmin.message] : isAdmin.message;
+            res.message = i18n(isAdmin.message);
         }
     } else {
         res.code = tmpData.code;
-        res.message = i18n[tmpData.message] ? i18n[tmpData.message] : tmpData.data;
+        res.message = i18n(tmpData.message);
     }
     return res;
 };
@@ -64,7 +63,7 @@ methods.reflushToken = async args => {
     if (!args || !args.params || !args.params.token) {
         return {
             code: 1,
-            message: i18n['A00000-009']
+            message: i18n('A00000-009')
         };
     }
     let data = await AdministratorRemote.flushToken(args.params, args.config);
@@ -76,7 +75,7 @@ methods.reflushToken = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 };
@@ -85,7 +84,7 @@ methods.getUserView = async args => {
     if (!args || !args.params) {
         return {
             code: 1,
-            message: i18n["A00000-009"]
+            message: i18n('A00000-009')
         };
     }
     if (!args.params.page) {
@@ -113,7 +112,7 @@ methods.getUserView = async args => {
     } else {
         return {
             code: data.code,
-            message: i18n[data.message] ? i18n[data.message] : data.message
+            message: i18n(data.message)
         };
     }
 };
