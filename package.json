@@ -1,28 +1,21 @@
 {
-  "name": "BLOG-Proxy",
+  "name": "website-proxy",
   "version": "1.0.0",
-  "description": "博客的代理层",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/A0000000000/BLOG-Proxy.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/A0000000000/BLOG-Proxy/issues"
-  },
-  "homepage": "https://github.com/A0000000000/BLOG-Proxy#readme",
   "dependencies": {
-    "axios": "^0.21.0",
-    "koa": "^2.13.0",
-    "koa-bodyparser": "^4.3.0",
-    "koa-multer": "^1.0.2",
+    "axios": "^0.21.1",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-json": "^2.0.2",
     "koa-router": "^10.0.0",
     "koa2-cors": "^2.0.6"
-  }
+  },
+  "devDependencies": {}
 }
