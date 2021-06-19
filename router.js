@@ -1,8 +1,10 @@
 const Router = require('koa-router')
 const router = new Router()
 
-const index = require('./routers/index')
+const indexRouter = require('./routers/indexRouter')
+const userRouter = require('./routers/userRouter')
 
-router.use('/', index.routes())
+router.use('/', indexRouter.routes())
+router.use('/user', userRouter.routes())
 
 module.exports = router

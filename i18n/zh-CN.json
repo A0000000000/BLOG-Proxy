@@ -1,0 +1,15 @@
+{
+  "SUCCESS": "成功",
+  "UNKNOWN_ERROR": "未知错误",
+  "AUTHORIZED_ERROR": "授权失败",
+  "SERVICE_FALLBACK": "服务熔断",
+  "INVALID_TOKEN": "令牌错误",
+  "EMPTY_ARGS": "参数不足",
+  "USERNAME_HAS_EXIST": "用户名已存在",
+  "ACCESS_DENIED": "访问拒绝",
+  "NOT_FOUND": "资源不存在",
+  "NO_RECORD": "没有该记录",
+  "HAS_DEPENDENT": "存在依赖",
+  "CODE_HAS_EXIST": "代码已存在",
+  "NAME_HAS_EXIST": "名字已存在"
+}

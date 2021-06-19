@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-axios.defaults.baseURL = 'http://47.103.147.156:8080/'
+axios.defaults.baseURL = 'http://127.0.0.1:8080/'
 
 axios.interceptors.request.use(config => {
     console.log(`----------begin request----------`)
